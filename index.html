@@ -1,574 +1,209 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth overflow-x-hidden">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>George Arshed | Digital Architect</title>
-    <meta name="description" content="Portfolio of George Arshed, a Full-Stack Architect and Visionary Developer.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Public/Style/index.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;700;900&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George / جـــــورج</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-    <script>
-        // TailwindCSS Config
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                        arabic: ['Tajawal', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: "#8b5cf6",
-                        secondary: "#ec4899",
-                        accent: "#06b6d4",
-                        dark: "#050505",
-                        light: "#f3f4f6",
-                        surface: "#0f0f11",
-                        surfaceLight: "#ffffff"
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
-                        'wiggle': 'wiggle 1s ease-in-out infinite',
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        shake: {
-                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
-                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
-                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
-                        },
-                        wiggle: {
-                            '0%, 100%': { transform: 'rotate(-3deg)' },
-                            '50%': { transform: 'rotate(3deg)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate3d(0px, 0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate3d(30px, -50px, 0px) scale(1.1)' },
-                            '66%': { transform: 'translate3d(-20px, 20px, 0px) scale(0.9)' },
-                            '100%': { transform: 'translate3d(0px, 0px, 0px) scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body
-    class="bg-light dark:bg-dark text-gray-900 dark:text-white transition-colors duration-500 overflow-x-hidden selection:bg-secondary selection:text-white">
-    <canvas id="particleCanvas" class="fixed inset-0 z-0 pointer-events-none opacity-40"></canvas>
-
-    <div id="preloader"
-        class="fixed inset-0 z-[9999] bg-dark flex items-center justify-center transition-opacity duration-500 will-change-opacity">
-        <div class="flex flex-col items-center gap-4">
-            <div class="relative w-24 h-24">
-                <div class="absolute inset-0 border-t-4 border-primary rounded-full animate-spin"></div>
-                <div class="absolute inset-3 border-r-4 border-secondary rounded-full animate-spin reverse-spin"></div>
-                <div class="absolute inset-6 border-b-4 border-accent rounded-full animate-spin"></div>
-                <i
-                    class="fa-solid fa-rocket absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white animate-bounce"></i>
+<body>
+    <div class="bg-glow-system">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+    <nav class="premium-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/Avatar.png" alt="George" class="nav-avatar-img">
+                <span class="nav-name">George / جـــــورج</span>
             </div>
-            <span
-                class="font-display font-black tracking-[0.5em] text-lg animate-pulse text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">LOADING</span>
-        </div>
-    </div>
-
-    <div class="fixed bottom-6 right-6 z-[90] flex flex-col gap-3">
-        <div id="keyHint"
-            class="bg-black/80 text-white px-4 py-2 rounded-lg text-xs font-mono hidden md:block opacity-0 transition-opacity duration-300 pointer-events-none">
-            Press <span class="text-primary font-bold">Shift+T</span> for Theme
-        </div>
-    </div>
-
-    <div class="fixed top-0 left-0 w-full h-[5px] z-[100]">
-        <div id="scrollProgress"
-            class="h-full bg-gradient-to-r from-primary via-secondary to-accent w-0 transition-all duration-75 shadow-[0_0_15px_rgba(139,92,246,0.5)] will-change-auto">
-        </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-black/5 dark:border-white/5 bg-white/70 dark:bg-dark/80 backdrop-blur-xl"
-        id="navbar">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between h-20 md:h-24">
-                <div class="flex items-center gap-3 group cursor-pointer hover:scale-105 transition-transform"
-                    id="logoMain" data-tilt data-tilt-scale="1.1">
-                    <div class="relative">
-                        <img src="Public/Assets/GeorgeAvatar.png"
-                            onerror="this.src='https://ui-avatars.com/api/?name=George+Arshed&background=random&bold=true'"
-                            alt="George"
-                            class="w-12 h-12 rounded-2xl border-2 border-primary/20 group-hover:border-primary group-hover:rotate-12 transition-all duration-300 shadow-lg object-cover">
-                        <div
-                            class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-dark animate-pulse">
-                        </div>
-                    </div>
-                    <div class="flex flex-col">
-                        <span
-                            class="font-display font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 group-hover:from-primary group-hover:to-secondary transition-all"
-                            data-i18n="name_main">George Arshed</span>
-                        <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary animate-pulse"
-                            data-i18n="nav_sub">Visionary Dev</span>
-                    </div>
-                </div>
-
-                <div
-                    class="hidden lg:flex items-center gap-2 bg-gray-100/50 dark:bg-white/5 p-1.5 rounded-2xl border border-black/5 dark:border-white/5 backdrop-blur-md shadow-inner">
-                    <a href="#home"
-                        class="nav-item px-5 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-xl transition-all relative overflow-hidden group">
-                        <i class="fa-solid fa-house mr-2 group-hover:animate-bounce"></i><span
-                            data-i18n="nav_home">Home</span>
-                    </a>
-                    <a href="#about"
-                        class="nav-item px-5 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-xl transition-all relative overflow-hidden group">
-                        <i class="fa-solid fa-user-astronaut mr-2 group-hover:animate-shake"></i><span
-                            data-i18n="nav_about">About</span>
-                    </a>
-                    <a href="#projects"
-                        class="nav-item px-5 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-xl transition-all relative overflow-hidden group">
-                        <i class="fa-solid fa-rocket mr-2 group-hover:animate-pulse"></i><span
-                            data-i18n="nav_projects">Ventures</span>
-                    </a>
-                    <a href="#contact"
-                        class="nav-item px-5 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-xl transition-all relative overflow-hidden group">
-                        <i class="fa-solid fa-paper-plane mr-2 group-hover:animate-wiggle"></i><span
-                            data-i18n="nav_contact">Contact</span>
-                    </a>
-                </div>
-
-                <div class="flex items-center gap-3">
-                    <button id="themeToggle"
-                        class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-white/10 hover:bg-primary hover:text-white text-gray-700 dark:text-white transition-all hover:rotate-180 active:scale-90 shadow-lg flex items-center justify-center cursor-pointer touch-manipulation">
-                        <i class="fa-solid fa-moon dark:hidden"></i>
-                        <i class="fa-solid fa-sun hidden dark:block"></i>
-                    </button>
-
-                    <button onclick="cycleLang()"
-                        class="hidden sm:flex items-center gap-2 bg-gray-200 dark:bg-white/10 border border-transparent hover:border-primary px-4 py-2 rounded-xl text-xs font-black tracking-widest transition-all active:scale-95 shadow-lg cursor-pointer">
-                        <i class="fa-solid fa-language text-primary text-lg"></i>
-                        <span id="currentLangDisplay">EN</span>
-                    </button>
-
-                    <button id="mobileMenuBtn"
-                        class="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg shadow-primary/30 active:scale-75 transition-transform cursor-pointer touch-manipulation">
-                        <i class="fa-solid fa-bars-staggered text-lg"></i>
-                    </button>
-                </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-menu-wrapper">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-item active-link">Overview</a></li>
+                    <li><a href="#vision" class="nav-item">UI/UX Studio</a></li>
+                    <li><a href="#specs" class="nav-item">Architecture</a></li>
+                </ul>
             </div>
         </div>
     </nav>
-
-    <!-- Mobile Menu | Hamburger Navbar -->
-    <div id="mobileMenu" class="fixed inset-0 z-[100] hidden">
-        <div id="mobileMenuOverlay"
-            class="absolute inset-0 bg-white/90 dark:bg-dark/95 backdrop-blur-2xl opacity-0 transition-opacity duration-500">
-        </div>
-        <div id="mobileMenuContent"
-            class="absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-surface border-l dark:border-white/10 shadow-2xl transform translate-x-full transition-transform duration-500 ease-out p-8 flex flex-col justify-between overflow-y-auto">
-            <div>
-                <div class="flex justify-between items-center mb-12">
-                    <div class="flex items-center gap-3">
-                        <img src="Public/Assets/GeorgeAvatar.png"
-                            onerror="this.src='https://ui-avatars.com/api/?name=G+A'"
-                            class="w-10 h-10 rounded-xl shadow-lg">
-                        <span class="font-display font-black text-xl" data-i18n="name_short">George.</span>
+    <main class="main-scroller">
+        <header id="home" class="hero-viewport">
+            <div class="hero-wrapper">
+                <div class="avatar-interactive-stage">
+                    <div class="avatar-frame">
+                        <img src="Assets/Avatar.png" alt="George" class="avatar-core-image">
                     </div>
-                    <button id="closeMenuBtn"
-                        class="w-10 h-10 rounded-full bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center cursor-pointer">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
+                    <div class="stage-ring ring-primary"></div>
+                    <div class="stage-ring ring-secondary"></div>
                 </div>
-                <div class="flex flex-col gap-4">
-                    <a href="#home"
-                        class="mobile-link p-4 rounded-2xl hover:bg-primary/10 flex items-center gap-4 group transition-all">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-house"></i>
-                        </div>
-                        <span class="text-2xl font-black font-display" data-i18n="nav_home">Home</span>
-                    </a>
-                    <a href="#about"
-                        class="mobile-link p-4 rounded-2xl hover:bg-secondary/10 flex items-center gap-4 group transition-all">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <span class="text-2xl font-black font-display" data-i18n="nav_about">About</span>
-                    </a>
-                    <a href="#projects"
-                        class="mobile-link p-4 rounded-2xl hover:bg-accent/10 flex items-center gap-4 group transition-all">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-rocket"></i>
-                        </div>
-                        <span class="text-2xl font-black font-display" data-i18n="nav_projects">Ventures</span>
-                    </a>
-                    <a href="#contact"
-                        class="mobile-link p-4 rounded-2xl hover:bg-green-500/10 flex items-center gap-4 group transition-all">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <span class="text-2xl font-black font-display" data-i18n="nav_contact">Contact</span>
-                    </a>
-                </div>
-            </div>
-            <div class="flex gap-4 mt-8">
-                <button onclick="cycleLang()"
-                    class="flex-1 py-3 rounded-xl bg-gray-100 dark:bg-white/5 font-bold hover:bg-primary hover:text-white transition-all">
-                    <i class="fa-solid fa-globe mr-2"></i> <span id="mobileLangDisplay">EN</span>
-                </button>
-                <button id="mobileThemeToggle"
-                    class="flex-1 py-3 rounded-xl bg-gray-100 dark:bg-white/5 font-bold hover:bg-secondary hover:text-white transition-all">
-                    <i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block"></i> Theme
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <main class="relative z-10">
-        <section id="home"
-            class="min-h-screen flex items-center justify-center relative px-6 pt-24 pb-12 overflow-hidden">
-            <div
-                class="absolute top-20 left-10 w-32 h-32 bg-primary/30 rounded-full blur-[50px] animate-blob mix-blend-multiply filter">
-            </div>
-            <div
-                class="absolute top-40 right-10 w-32 h-32 bg-secondary/30 rounded-full blur-[50px] animate-blob animation-delay-2000 mix-blend-multiply filter">
-            </div>
-            <div
-                class="absolute bottom-20 left-1/2 w-48 h-48 bg-accent/30 rounded-full blur-[60px] animate-blob animation-delay-4000 mix-blend-multiply filter">
-            </div>
-
-            <div class="text-center max-w-5xl mx-auto z-10 perspective-1000">
-                <h1
-                    class="text-[clamp(3.5rem,12vw,9rem)] font-display font-black mb-6 tracking-tighter leading-[0.85] animate-fade-in-up drop-shadow-2xl hover:scale-[1.02] transition-transform cursor-default select-none will-change-transform">
-                    <span data-i18n="hero_title_1"
-                        class="inline-block hover:text-primary transition-colors duration-300">Digital</span> <br>
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-gradient-text"
-                        data-i18n="hero_title_2">Mastery.</span>
+                <h1 class="giant-display-text">
+                    <span class="line-alpha">George / جـــــورج</span>
+                    <span class="line-beta">UI/UX Engineer</span>
                 </h1>
-
-                <p
-                    class="text-xl md:text-3xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-100 font-medium">
-                    <span data-i18n="hero_im">I'm</span>
-                    <span class="relative inline-block px-2 group">
-                        <span class="relative z-10 text-black dark:text-white font-black"
-                            data-i18n="name_first">George</span>
-                        <span
-                            class="absolute inset-0 bg-primary/20 transform -skew-x-12 group-hover:bg-primary/50 transition-all"></span>
-                    </span>
-                    <br class="md:hidden">
-                    <span id="typewriter" class="text-primary font-bold"></span><span
-                        class="animate-pulse text-secondary">_</span>
-                </p>
-
-                <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up delay-200 px-4">
-                    <a href="#projects"
-                        class="group relative px-10 py-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-black text-lg shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_40px_rgba(139,92,246,0.4)] transition-all hover:-translate-y-2 overflow-hidden cursor-pointer">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-opacity w-[200%] animate-gradient-text">
-                        </div>
-                        <span class="relative z-10 flex items-center justify-center gap-3">
-                            <span data-i18n="btn_work">View Work</span>
-                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                <p class="hero-paragraph-lead">Crafting next-generation digital products with extreme structural
+                    precision, high-fidelity micro-interactions, and unparalleled aesthetic engineering inspired by
+                    classic computing design layouts.</p>
+                <div class="hero-actions-area">
+                    <a href="#specs" class="action-trigger-btn">
+                        <span class="btn-text">Explore Systems</span>
+                        <span class="btn-icon">→</span>
                     </a>
-                    <a href="#contact"
-                        class="px-10 py-5 bg-white/50 dark:bg-white/5 border-2 border-black/10 dark:border-white/10 rounded-2xl font-black text-lg hover:bg-white hover:border-transparent hover:text-black dark:hover:bg-white dark:hover:text-black transition-all hover:-translate-y-2 backdrop-blur-md shadow-lg cursor-pointer"
-                        data-i18n="btn_contact_me">
-                        Contact Me
-                    </a>
-                </div>
-
-                <div
-                    class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mt-20 border-t border-black/10 dark:border-white/10 pt-12 animate-fade-in-up delay-300">
-                    <div class="counter-card p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer group"
-                        data-tilt>
-                        <h4 class="text-4xl md:text-5xl font-display font-black text-primary group-hover:scale-110 transition-transform counter"
-                            data-target="18">0</h4>
-                        <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2"
-                            data-i18n="stat_age">Age</p>
-                    </div>
-                    <div class="counter-card p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer group"
-                        data-tilt>
-                        <h4 class="text-4xl md:text-5xl font-display font-black text-secondary group-hover:scale-110 transition-transform counter"
-                            data-target="4">0</h4>
-                        <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2"
-                            data-i18n="stat_exp">Years Exp</p>
-                    </div>
-                    <div class="counter-card p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer group"
-                        data-tilt>
-                        <h4 class="text-4xl md:text-5xl font-display font-black text-accent group-hover:scale-110 transition-transform counter"
-                            data-target="14">0</h4>
-                        <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2"
-                            data-i18n="stat_projects">Projects</p>
-                    </div>
-                    <div class="counter-card p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer group"
-                        data-tilt>
-                        <h4 class="text-4xl md:text-5xl font-display font-black text-green-500 group-hover:scale-110 transition-transform counter"
-                            data-target="3">0</h4>
-                        <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2"
-                            data-i18n="stat_comm">Communities</p>
-                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24 px-6 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto relative z-10">
-                <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
-                    <div data-tilt data-tilt-max="5" class="relative group">
-                        <div
-                            class="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-[2rem] blur-lg opacity-30 group-hover:opacity-75 transition duration-500 animate-tilt will-change-opacity">
-                        </div>
-                        <div
-                            class="relative bg-white dark:bg-surface border border-black/5 dark:border-white/10 p-10 rounded-[2rem] shadow-2xl">
-                            <div class="flex items-center gap-4 mb-6">
-                                <span class="w-12 h-1 bg-primary rounded-full"></span>
-                                <span class="text-primary font-black tracking-[0.2em] text-xs uppercase"
-                                    data-i18n="sec_bio">Biography</span>
+        </header>
+        <section id="vision" class="viewport-section section-hidden">
+            <div class="content-bound-box">
+                <div class="section-header-block">
+                    <span class="section-pill">Core Focus</span>
+                    <h2 class="section-headline-text">The Interface Standard.</h2>
+                </div>
+                <div class="bento-grid-layout">
+                    <div class="bento-box bento-large-card interactive-card">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-internal-content">
+                            <div class="card-icon-header">
+                                <div class="ui-dot red"></div>
+                                <div class="ui-dot yellow"></div>
+                                <div class="ui-dot green"></div>
                             </div>
-                            <h2 class="text-4xl md:text-6xl font-display font-black mb-8 leading-tight"
-                                data-i18n="about_title">The Mind Behind The Code</h2>
-                            <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6 font-medium"
-                                data-i18n="about_desc">
-                                Architecting digital solutions from the ground up. Focused on high performance,
-                                scalability, and futuristic aesthetics.
+                            <h3 class="card-title-heavy">Aesthetic & Code Symmetry</h3>
+                            <p class="card-body-paragraph">Interfaces should not merely be viewed; they must be felt. My
+                                workflow merges structural integrity with emotional design principles. By employing
+                                strict grid alignment, balanced negative spaces, semantic layouts, and fluid
+                                physics-based state transitions, every interface mirrors the elite quality standard seen
+                                in modern consumer operating systems and premium software dashboards.</p>
+                            <div class="card-visual-decoration">
+                                <div class="deco-line"></div>
+                                <div class="deco-line short"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-box bento-small-card interactive-card">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-internal-content">
+                            <h3 class="card-title-heavy">Fluid Physics</h3>
+                            <p class="card-body-paragraph">Zero linear transitions. Every mouse hover, press state, and
+                                viewport entrance sequence adheres to complex cubic-bezier curves for immediate tactile
+                                satisfaction.</p>
+                        </div>
+                    </div>
+                    <div class="bento-box bento-small-card interactive-card">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-internal-content">
+                            <h3 class="card-title-heavy">Responsive Logic</h3>
+                            <p class="card-body-paragraph">From portable hand-held screens to ultra-wide desktop
+                                monitors, layouts dynamic-shift smoothly using programmatic relative clamping models.
                             </p>
-                            <div class="flex flex-wrap gap-4">
-                                <div
-                                    class="bg-gray-100 dark:bg-white/5 px-4 py-2 rounded-lg flex items-center gap-2 font-bold text-sm">
-                                    <i class="fa-solid fa-location-dot text-red-500 animate-bounce"></i> Damascus, SY
-                                </div>
-                                <div
-                                    class="bg-gray-100 dark:bg-white/5 px-4 py-2 rounded-lg flex items-center gap-2 font-bold text-sm">
-                                    <i class="fa-solid fa-laptop-code text-blue-500"></i> Freelance
-                                </div>
-                            </div>
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div
-                            class="p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-3xl border border-purple-500/20 hover:scale-105 transition-transform cursor-crosshair">
-                            <i class="fa-solid fa-brain text-4xl text-primary mb-4 animate-float"></i>
-                            <h3 class="text-xl font-black mb-2" data-i18n="goal_title">Vision</h3>
-                            <p class="text-xs text-gray-500 font-bold" data-i18n="goal_desc">Building digital assets
-                                that create leverage.</p>
-                        </div>
-                        <div
-                            class="p-6 bg-gradient-to-br from-pink-500/10 to-rose-500/10 rounded-3xl border border-pink-500/20 hover:scale-105 transition-transform cursor-crosshair mt-8">
-                            <i class="fa-solid fa-bolt text-4xl text-secondary mb-4 animate-pulse"></i>
-                            <h3 class="text-xl font-black mb-2" data-i18n="exec_title">Execution</h3>
-                            <p class="text-xs text-gray-500 font-bold" data-i18n="exec_desc">Raw vision to reality with
-                                surgical precision.</p>
-                        </div>
-                        <div
-                            class="p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-3xl border border-cyan-500/20 hover:scale-105 transition-transform cursor-crosshair">
-                            <i class="fa-solid fa-server text-4xl text-accent mb-4 animate-bounce"></i>
-                            <h3 class="text-xl font-black mb-2" data-i18n="arch_title">Architecture</h3>
-                            <p class="text-xs text-gray-500 font-bold" data-i18n="arch_desc">Robust backend systems that
-                                handle scale.</p>
-                        </div>
-                        <div
-                            class="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-3xl border border-green-500/20 hover:scale-105 transition-transform cursor-crosshair mt-8">
-                            <i class="fa-solid fa-palette text-4xl text-green-500 mb-4 animate-wiggle"></i>
-                            <h3 class="text-xl font-black mb-2">Design</h3>
-                            <p class="text-xs text-gray-500 font-bold">Pixel perfect interfaces that pop.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-white dark:bg-surface border border-black/5 dark:border-white/5 rounded-[3rem] p-8 md:p-12 shadow-xl relative overflow-hidden group">
-                    <div
-                        class="absolute -right-20 -top-20 text-[20rem] text-black/5 dark:text-white/5 rotate-12 group-hover:rotate-45 transition-transform duration-700 pointer-events-none">
-                        <i class="fa-brands fa-js"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div
-                                class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary text-3xl shadow-[0_0_30px_rgba(139,92,246,0.3)] animate-bounce">
-                                <i class="fa-solid fa-layer-group"></i>
-                            </div>
-                            <h3 class="text-4xl font-display font-black" data-i18n="skill_title">Tech Arsenal</h3>
-                        </div>
-                        <div class="flex flex-wrap gap-4" id="skillContainer"></div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 px-4 relative">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-20">
-                    <h2 class="text-[clamp(3rem,8vw,6rem)] font-display font-black uppercase leading-none mb-4"
-                        data-i18n="nav_projects">Ventures</h2>
-                    <div class="h-2 w-32 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+        <section id="specs" class="viewport-section section-hidden">
+            <div class="content-bound-box">
+                <div class="section-header-block">
+                    <span class="section-pill">Capability Matrix</span>
+                    <h2 class="section-headline-text">Technical Hardware Specifications.</h2>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <article
-                        class="group rounded-[2.5rem] bg-white dark:bg-surface border border-black/5 dark:border-white/5 overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(139,92,246,0.2)] transition-all duration-500 hover:-translate-y-2">
-                        <div class="h-[400px] overflow-hidden relative">
-                            <img src="Public/Assets/Levant-Banner.gif"
-                                onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXN6aG0xd3Z6aG0xd3Z6aG0xd3Z6aG0xd3Z6aG0xd3Z6aG0xdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L1R1TVThqceK6M8M8e/giphy.gif'"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80">
+                <div class="dual-split-grid">
+                    <div class="matrix-card interactive-card">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-internal-content">
+                            <div class="matrix-header">
+                                <div class="matrix-badge high">Production Grade</div>
+                                <h3 class="matrix-title">Advanced Production Stack</h3>
                             </div>
-                            <span
-                                class="absolute top-6 left-6 px-4 py-2 bg-primary text-white text-xs font-black rounded-full shadow-lg animate-bounce"
-                                data-i18n="tag_gaming">GAMING</span>
-                        </div>
-                        <div class="p-8 md:p-10 relative">
-                            <div class="flex items-center gap-6 -mt-20 mb-6 relative z-10">
-                                <img src="Public/Assets/Levant-Logo.png"
-                                    class="w-24 h-24 rounded-3xl border-4 border-white dark:border-surface shadow-2xl group-hover:rotate-12 transition-transform bg-black">
-                                <div>
-                                    <h3 class="text-3xl font-display font-black text-white shadow-black drop-shadow-md">
-                                        Levant</h3>
-                                    <p class="text-primary font-bold tracking-wider text-xs bg-black/50 px-2 py-1 rounded backdrop-blur-sm"
-                                        data-i18n="sub_digi_comm">Digital Community</p>
+                            <div class="responsive-icon-grid">
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-html5-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">HTML5</span>
+                                    <span class="icon-status-pct">95%</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-css3-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">CSS3</span>
+                                    <span class="icon-status-pct">95%</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-javascript-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">JavaScript</span>
+                                    <span class="icon-status-pct">90%</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-figma-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">Figma</span>
+                                    <span class="icon-status-pct">85%</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-sass-original colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">SASS</span>
+                                    <span class="icon-status-pct">90%</span>
                                 </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 font-medium"
-                                data-i18n="desc_levant">A massive gaming ecosystem where cross-cultural boundaries
-                                disappear.</p>
-                            <div class="flex gap-4">
-                                <a href="https://discord.gg/FBzNjDpMwa" target="_blank"
-                                    class="flex-1 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-xl font-black text-center transition-all hover:scale-105 flex items-center justify-center gap-2">
-                                    <i class="fa-brands fa-discord"></i> Discord
-                                </a>
-                                <a href="https://dark-roasted/Levant/" target="_blank"
-                                    class="flex-1 py-4 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-900 dark:text-white rounded-xl font-black text-center transition-all hover:scale-105">
-                                    Website
-                                </a>
-                            </div>
                         </div>
-                    </article>
-
-                    <article
-                        class="group rounded-[2.5rem] bg-white dark:bg-surface border border-black/5 dark:border-white/5 overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(6,182,212,0.2)] transition-all duration-500 hover:-translate-y-2">
-                        <div class="h-[400px] overflow-hidden relative">
-                            <img src="Public/Assets/SyriaBanner.png"
-                                onerror="this.src='https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=1000'"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80">
+                    </div>
+                    <div class="matrix-card interactive-card">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-internal-content">
+                            <div class="matrix-header">
+                                <div class="matrix-badge low">R&D Pipelines</div>
+                                <h3 class="matrix-title">Familiar & Adaptive Ecosystems</h3>
                             </div>
-                            <span
-                                class="absolute top-6 left-6 px-4 py-2 bg-accent text-white text-xs font-black rounded-full shadow-lg animate-bounce"
-                                data-i18n="tag_culture">CULTURE</span>
-                        </div>
-                        <div class="p-8 md:p-10 relative">
-                            <div class="flex items-center gap-6 -mt-20 mb-6 relative z-10">
-                                <img src="Public/Assets/SyriaLogo.png"
-                                    class="w-24 h-24 rounded-3xl border-4 border-white dark:border-surface shadow-2xl group-hover:rotate-12 transition-transform bg-black">
-                                <div>
-                                    <h3 class="text-3xl font-display font-black text-white shadow-black drop-shadow-md"
-                                        data-i18n="proj_syria">Syria</h3>
-                                    <p class="text-accent font-bold tracking-wider text-xs bg-black/50 px-2 py-1 rounded backdrop-blur-sm"
-                                        data-i18n="sub_heritage">Heritage & Grind</p>
+                            <div class="responsive-icon-grid">
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-react-original colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">React.js</span>
+                                    <span class="icon-status-pct">Exploring</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-nodejs-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">Node.js</span>
+                                    <span class="icon-status-pct">Exploring</span>
+                                </div>
+                                <div class="icon-node-box">
+                                    <div class="icon-wrapper-inner">
+                                        <i class="devicon-python-plain colored"></i>
+                                    </div>
+                                    <span class="icon-label-text">Python</span>
+                                    <span class="icon-status-pct">Exploring</span>
                                 </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 font-medium" data-i18n="desc_syria">
-                                Where ancient Syrian soul meets future-tech chaos. No stiffness.</p>
-                            <div class="flex gap-4">
-                                <a href="https://discord.com/invite/qFDQG5aDJN" target="_blank"
-                                    class="flex-1 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-xl font-black text-center transition-all hover:scale-105 flex items-center justify-center gap-2">
-                                    <i class="fa-brands fa-discord"></i> Discord
-                                </a>
-                                <a href="https://dark-roasted.github.io/Syria/" target="_blank"
-                                    class="flex-1 py-4 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-900 dark:text-white rounded-xl font-black text-center transition-all hover:scale-105">
-                                    Website
-                                </a>
-                            </div>
                         </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="py-24 px-4">
-            <div class="max-w-5xl mx-auto relative group">
-                <div
-                    class="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-[3rem] blur-xl opacity-20 group-hover:opacity-60 transition duration-1000 animate-gradient-text">
-                </div>
-                <div
-                    class="relative bg-white dark:bg-black/80 border border-black/5 dark:border-white/10 rounded-[2.5rem] p-12 md:p-24 text-center backdrop-blur-xl overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent">
-                    </div>
-
-                    <div class="inline-block p-4 rounded-full bg-gray-100 dark:bg-white/5 mb-8 animate-bounce">
-                        <i class="fa-solid fa-hand-spock text-4xl text-yellow-500"></i>
-                    </div>
-
-                    <h2 class="text-[clamp(2rem,6vw,5rem)] font-display font-black mb-8 leading-tight"
-                        data-i18n="contact_heading">Ready to build something <span
-                            class="text-primary">legendary?</span></h2>
-
-                    <div class="flex flex-col md:flex-row justify-center gap-6">
-                        <a href="mailto:lilzeng1@outlook.com"
-                            class="group flex items-center gap-4 p-5 bg-gray-100 dark:bg-white/5 rounded-2xl border border-transparent hover:border-primary hover:bg-white dark:hover:bg-black transition-all hover:scale-110 hover:shadow-2xl">
-                            <div
-                                class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary group-hover:rotate-[360deg] transition-transform duration-700">
-                                <i class="fa-solid fa-envelope text-xl"></i>
-                            </div>
-                            <span class="font-bold text-lg">Mail me!</span>
-                        </a>
-                        <a href="https://github.com/dark-roasted" target="_blank"
-                            class="group flex items-center gap-4 p-5 bg-gray-100 dark:bg-white/5 rounded-2xl border border-transparent hover:border-white hover:bg-black hover:text-white transition-all hover:scale-110 hover:shadow-2xl">
-                            <div
-                                class="w-12 h-12 bg-black/10 dark:bg-white/20 rounded-xl flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-700">
-                                <i class="fa-brands fa-github text-xl"></i>
-                            </div>
-                            <span class="font-bold text-lg">Github</span>
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Footer Section -->
-    <footer class="border-t border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black py-12 px-6 relative z-10">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left rtl:md:text-right">
-                <h2 class="text-2xl font-display font-black italic relative inline-block group cursor-pointer hover:text-primary transition-colors"
-                    data-i18n="name_main">George Arshed</h2>
-                <p class="text-gray-500 text-xs mt-2 font-bold tracking-widest" data-i18n="footer_slogan">CRAFTING
-                    DIGITAL EMPIRES.</p>
-            </div>
-            <div class="flex gap-6">
-                <a href="https://github.com/dark-roasted"
-                    class="w-10 h-10 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all hover:-translate-y-2"><i
-                        class="fa-brands fa-github"></i></a>
-                <a href="https://instagram.com/lilzeng1"
-                    class="w-10 h-10 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-pink-600 hover:text-white transition-all hover:-translate-y-2"><i
-                        class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p class="text-gray-400 text-[9px] font-black tracking-widest uppercase" data-i18n="footer_rights">© 2026.
-                DAMASCUS. ALL RIGHTS RESERVED.</p>
+    <footer class="system-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">Designed and engineered completely by George / جـــــورج.</p>
         </div>
     </footer>
-
-    <script src="Public/Scripts/index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
