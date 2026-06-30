@@ -3,84 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George | Web Developer</title>
+    <title>George | جــــورج</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <canvas id="void-canvas"></canvas>
-    
-    <div class="wrapper">
-        <header class="hero-glass">
-            <div class="banner-container">
+    <div id="glow-pointer"></div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <main class="container">
+        <section class="bubble profile-bubble interact-card">
+            <div class="banner-wrapper">
                 <img src="./Assets/Banner.png" alt="Banner" class="banner-img">
-                <div class="banner-overlay"></div>
+                <div class="banner-fade"></div>
             </div>
             
-            <div class="profile-core">
-                <div class="pfp-wrapper">
-                    <img src="./Assets/Logo.png" alt="George" class="pfp-img">
+            <div class="profile-content">
+                <div class="avatar-wrapper magnetic-el">
+                    <img src="./Assets/Logo.png" alt="George" class="avatar-img">
+                    <div class="crown-badge">
+                        <img src="./Assets/George's Crown.png" alt="Crown">
+                    </div>
                 </div>
                 
-                <div class="title-area">
-                    <div class="name-row">
-                        <h1>George</h1>
-                        <img src="./Assets/George's Crown.png" alt="Crown" class="crown-icon">
-                    </div>
-                    <h2 class="nickname">@madebygeorge</h2>
-                    <p class="role-badge">Web Developer & UI/UX Engineer</p>
-                </div>
+                <h1 class="display-name scramble-text" data-value="George">George</h1>
+                <h2 class="username">@madebygeorge</h2>
+                
+                <p class="bio">
+                    Architecting smooth digital experiences and robust backend systems. Driven by logic, minimal by design.
+                </p>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <section class="card-glass">
-                <h3 class="section-title">Tech Arsenal</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <i class="devicon-javascript-plain colored"></i>
+        <div class="grid-layout">
+            <section class="bubble interact-card">
+                <h3 class="section-heading"><i class="ph-fill ph-stack"></i> Core Stack</h3>
+                <div class="skills-container">
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-file-js"></i>
                         <span>JavaScript</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="devicon-nodejs-plain colored"></i>
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-hexagon"></i>
                         <span>Node.js</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="devicon-express-original"></i>
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-terminal-window"></i>
                         <span>Express</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="devicon-tailwindcss-plain colored"></i>
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-wind"></i>
                         <span>Tailwind</span>
                     </div>
-                    <div class="skill-item">
-                        <i class="devicon-figma-plain colored"></i>
-                        <span>Figma</span>
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-database"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="skill-pill magnetic-el">
+                        <i class="ph-fill ph-code"></i>
+                        <span>Python</span>
                     </div>
                 </div>
             </section>
 
-            <section class="card-glass athena-section">
-                <div class="athena-header">
-                    <h3 class="section-title" id="athena-title">Athena Community</h3>
-                    <span class="pulse-dot"></span>
+            <section class="bubble interact-card">
+                <h3 class="section-heading"><i class="ph-fill ph-cpu"></i> Philosophy</h3>
+                <p class="philosophy-text">
+                    I believe in building systems that are as beautiful under the hood as they are on the surface. Security, optimization, and seamless UI/UX are not optional; they are the foundation of any digital architecture.
+                </p>
+                <div class="waveform-container">
+                    <canvas id="spotify-wave-canvas"></canvas>
                 </div>
-                <p class="athena-desc">A mega-community where culture, science, and software practice merge.</p>
-                
-                <div class="widget-wrapper">
-                    <iframe src="https://discord.com/widget?id=1506305604254306364&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                </div>
-
-                <a href="https://discord.gg/bJaFdFrsw4" target="_blank" class="white-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/>
-                    </svg>
-                    Join Server
-                </a>
             </section>
-        </main>
-    </div>
+        </div>
+
+        <section class="bubble interact-card">
+            <h3 class="section-heading"><i class="ph-fill ph-planet"></i> The Void Ecosystem</h3>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="ph-fill ph-infinity"></i>
+                        <h4>Void</h4>
+                    </div>
+                    <span class="exclusive-tag">Athena Exclusive</span>
+                </div>
+                <p class="project-desc">
+                    A high-frequency global exchange, advanced economy, and real-time market simulation engine. Engineered strictly for the Athena mega-community where culture, science, and software practice merge.
+                </p>
+                <div class="project-stats">
+                    <div class="stat">
+                        <i class="ph-fill ph-pulse"></i>
+                        <span>Real-time</span>
+                    </div>
+                    <div class="stat">
+                        <i class="ph-fill ph-shield-check"></i>
+                        <span>Secure Architecture</span>
+                    </div>
+                    <div class="stat">
+                        <i class="ph-fill ph-users"></i>
+                        <span>Mega-Community</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="main.js"></script>
 </body>
 </html>
