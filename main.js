@@ -1,121 +1,90 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const initCards = () => {
-        const cards = document.querySelectorAll('.interactive-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    };
-    initCards();
-    const initNavigation = () => {
-        const nav = document.querySelector('.premium-nav');
-        const toggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('section, header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-            let currentId = '';
-            const scrollPos = window.scrollY + 120;
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const height = section.clientHeight;
-                if (scrollPos >= top && scrollPos < top + height) {
-                    currentId = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active-link');
-                if (link.getAttribute('href') === `#${currentId}`) {
-                    link.classList.add('active-link');
-                }
-            });
-        });
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('open');
-            nav.classList.toggle('menu-active');
-            if (nav.classList.contains('menu-active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'initial';
-            }
-        });
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (toggle.classList.contains('open')) {
-                    toggle.classList.remove('open');
-                    nav.classList.remove('menu-active');
-                    document.body.style.overflow = 'initial';
-                }
-                const offsetTop = targetSection.offsetTop - 60;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    };
-    initNavigation();
-    const initScrollAnimations = () => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                }
-            });
-        }, observerOptions);
-        const hiddenElements = document.querySelectorAll('.section-hidden');
-        hiddenElements.forEach(el => observer.observe(el));
-    };
-    initScrollAnimations();
-    const initParallaxEffect = () => {
-        const hero = document.querySelector('.hero-viewport');
-        const avatarStage = document.querySelector('.avatar-interactive-stage');
-        const mainTitle = document.querySelector('.giant-display-text');
-        if (!hero || window.innerWidth < 768) return;
-        hero.addEventListener('mousemove', (e) => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const mouseX = (e.clientX - width / 2) / (width / 2);
-            const mouseY = (e.clientY - height / 2) / (height / 2);
-            if (avatarStage) {
-                avatarStage.style.transform = `translate(${mouseX * 15}px, ${mouseY * 15}px)`;
-            }
-            if (mainTitle) {
-                mainTitle.style.transform = `translate(${mouseX * -8}px, ${mouseY * -8}px)`;
-            }
-        });
-        hero.addEventListener('mouseleave', () => {
-            if (avatarStage) avatarStage.style.transform = 'translate(0px, 0px)';
-            if (mainTitle) mainTitle.style.transform = 'translate(0px, 0px)';
-        });
-    };
-    initParallaxEffect();
-    const addDynamicGlowPulse = () => {
-        const orbs = document.querySelectorAll('.glow-orb');
-        window.addEventListener('scroll', () => {
-            const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            orbs.forEach((orb, index) => {
-                const factor = (index + 1) * 30;
-                orb.style.transform = `translateY(${scrollPct * factor}px)`;
-            });
-        });
-    };
-    addDynamicGlowPulse();
+const canvas = document.getElementById('void-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 1.5;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.speedY = (Math.random() - 0.5) * 0.2;
+        this.opacity = Math.random();
+        this.fadeSpeed = (Math.random() * 0.02) + 0.005;
+        this.fadingOut = Math.random() > 0.5;
+        this.color = Math.random() > 0.95 ? '176, 11, 11' : '255, 255, 255';
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+
+        if (this.fadingOut) {
+            this.opacity -= this.fadeSpeed;
+            if (this.opacity <= 0.1) this.fadingOut = false;
+        } else {
+            this.opacity += this.fadeSpeed;
+            if (this.opacity >= 1) this.fadingOut = true;
+        }
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+        ctx.fill();
+    }
+}
+
+function initParticles() {
+    particles = [];
+    const particleCount = Math.floor((width * height) / 8000);
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+    
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+    resize();
+    initParticles();
 });
+
+resize();
+initParticles();
+animate();
+
+async function fetchAthenaData() {
+    try {
+        const response = await fetch('https://discord.com/api/guilds/1506305604254306364/widget.json');
+        const data = await response.json();
+        const titleEl = document.getElementById('athena-title');
+        if (data.name) {
+            titleEl.textContent = data.name;
+        }
+    } catch (error) {}
+}
+
+fetchAthenaData();
