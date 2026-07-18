@@ -118,7 +118,7 @@ class FluidAmbient {
     }
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        this.ctx.fillStyle = '#070505';
+        this.ctx.fillStyle = '#080607';
         this.ctx.fillRect(0, 0, this.width, this.height);
         
         let yOff = 0;
@@ -134,7 +134,7 @@ class FluidAmbient {
                 this.ctx.beginPath();
                 this.ctx.moveTo(px, py);
                 this.ctx.lineTo(px + v.x * 30 * intensity, py + v.y * 30 * intensity);
-                this.ctx.strokeStyle = `rgba(230, 57, 70, ${intensity * 0.15})`;
+                this.ctx.strokeStyle = `rgba(123,43,54, ${intensity * 0.13})`;
                 this.ctx.lineWidth = 2;
                 this.ctx.stroke();
                 xOff += 0.08;
@@ -282,8 +282,8 @@ class SpotifyWave {
             
             let y = (this.height - b.h) / 2;
             let grad = this.ctx.createLinearGradient(b.x, y, b.x, y + b.h);
-            grad.addColorStop(0, '#e63946');
-            grad.addColorStop(1, '#80151f');
+            grad.addColorStop(0, '#a63b49');
+            grad.addColorStop(1, '#47242b');
             
             this.ctx.fillStyle = grad;
             this.ctx.beginPath();
